@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>EECS 183 Web Schedulizer - KevKevKevKevKev Edition!</h1>
+<a href="/">Click here to go back to the first page!</a><br><br>
+
+You are at the subjects page now!
+Please pick one school to list the catalog numbers available.
+
+<div>
+    <h2>The terms returned from the schedule API are:</h2>
+    {% for subjectObj in subjects %}
+    	<a href="/term={{ termCode }}/school={{ schoolCode }}/subject={{ subjectObj.SubjectCode }}">
+        {{ subjectObj.SubjectDescr }}</a><br>
+    {% endfor %}
+</div>
+
+{% endblock %}

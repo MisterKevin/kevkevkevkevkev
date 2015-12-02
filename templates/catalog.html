@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>EECS 183 Web Schedulizer - KevKevKevKevKev Edition!</h1>
+<a href="/">Click here to go back to the first page!</a><br><br>
+
+You are at the catalogs page now!
+Please pick one school to list the course description for that class.
+
+<div>
+    <h2>The terms returned from the schedule API are:</h2>
+    {% for catalogObj in catalog %}
+    	<a href="/term={{ termCode }}/school={{ schoolCode }}/subject={{ subjectCode }}/catalog={{ catalogObj.CatalogNumber }}">
+        EECS {{ catalogObj.CatalogNumber }} &nbsp; - &nbsp;{{ catalogObj.CourseTitle }}</a><br>
+    {% endfor %}
+</div>
+
+{% endblock %}

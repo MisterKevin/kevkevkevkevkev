@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>EECS 183 Web Schedulizer - KevKevKevKevKev Edition!</h1>
+<a href="/">Click here to go back to the first page!</a><br><br>
+
+You are at the courses page now!
+Have fun reading about the classes, and click on an individual section to learn even more!
+
+<div>
+    <h2>The terms returned from the schedule API are:</h2>
+    <strong>Course Description:</strong> {{ courseDescr }}<br><br>
+
+    {% for bigObj in sectionNums %}
+    	<strong>Section:</strong> {{ bigObj }}<br>
+    	<strong>Instructor(s):</strong> 
+    		{% for newObj in instructorDetails[bigObj] %}
+    			{{ newObj.InstructorName }} <br>
+    		{% endfor %}
+    	<strong>Enrollment Status:</strong> {{ sectionDetails[bigObj].EnrollmentStatus }}<br>
+    	<strong>Credits:</strong> {{ sectionDetails[bigObj].CreditHours }}<br>
+    	<strong>Available Seats:</strong> {{ sectionDetails[bigObj].AvailableSeats }}<br>
+    	<strong>Waitlist Total:</strong> {{ sectionDetails[bigObj].WaitTotal }}<br>
+    	<strong>Enrollment Total:</strong> {{ sectionDetails[bigObj].EnrollmentTotal }} <br>
+    	<strong>Enrollment Capacity:</strong> {{ sectionDetails[bigObj].EnrollmentCapacity }}<br>
+
+    	<br>
+    {% endfor %}
+</div>
+
+{% endblock %}
